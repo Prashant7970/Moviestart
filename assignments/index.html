@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: rgb(25, 25, 25);
+        }
+        #movies{
+            width: 90%;
+            margin:20px auto;
+            display: grid;
+            grid-template-columns: repeat(5,1fr);
+            gap: 30px;
+            
+        }
+        #movies>div{
+           width: 100%;
+            text-align: center;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            border-radius: 10px;
+            color:white;
+           
+            
+        }
+        #movies>div>img{
+            width: 100%;
+         
+           border-radius: 10px ;
+        }
+      
+        #bar{
+       background-color: rgb(15, 14, 14);
+        position: sticky;
+        top: 0;
+        width: 100%;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        padding: 6px 0px;
+        font-weight: bold;
+
+       }
+       .nav-left{
+        width: 50%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+       }
+       .nav-right{
+        width: 25%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-size: 15px;
+       }
+       li{
+        list-style: none;
+       }
+       #carousel{
+        margin: 0px 10px;
+        padding: 0px 10px;
+       }
+       #loader-div{
+        display: flex;
+        justify-content: center;
+        
+        
+       }
+       #movies>div>h4,p{
+        display: none;
+      }
+      #movies>div:hover p{
+        display: block;
+      }
+      
+      
+       
+       
+
+    </style>
+</head>
+<body>
+    <nav id="bar">
+        <div class="nav-left">
+            <li></li>
+        <li> <img src="https://secure-media.hotstarext.com/web-assets/prod/images/brand-logos/disney-hotstar-logo-dark.svg" alt=""></li>
+        <li>TV</li>
+        <li>Movies</li>
+        <li>Sports</li>
+        <li>Disney+</li>
+        <li> <img src="https://www.hotstar.com/assets/4aa70ede8904e16b7630300c09219c8e.svg" alt=""></li>
+        </div>
+              <div class="nav-right">
+                <li><input type="search" name="" id=""></li>
+                <li><button>SUBSCRIBE</button></li>
+                <a href="login.html"> 
+                    <li>LOGIN</li>
+                </a>
+               
+              </div> 
+                
+              
+                   
+               
+             </nav>
+    <a href="search.html">
+        <button>Search</button>
+    </a>
+   
+    <div id="carousel">
+
+    </div>
+    <div id="btn">
+        <button onclick="ASC()">Rating:L to H</button>
+        <button onclick="DSC()">Rating:H to L</button>
+    </div>
+    <div id="loader-div">
+        <img id="loader-gif" src=" https://i.giphy.com/media/y1ZBcOGOOtlpC/giphy.webp" id="loading" alt="">
+    </div>
+    <div id="movies">
+
+    </div>
+   
+</body>
+<script src="movies.js"></script>
+</html>
