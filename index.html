@@ -6,85 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies</title>
     <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/128/83/83519.png" type="image/x-icon">
-    <style>
-        body{
-            margin: 0;
-            padding: 0;
-            background: rgb(25, 25, 25);
-        }
-        #movies{
-            width: 90%;
-            margin:20px auto;
-            display: grid;
-            grid-template-columns: repeat(5,1fr);
-            gap: 30px;
-            
-        }
-        #movies>div{
-           width: 100%;
-            text-align: center;
-            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-            border-radius: 10px;
-            color:white;
-           
-            
-        }
-        #movies>div>img{
-            width: 100%;
-         
-           border-radius: 10px ;
-        }
-      
-        #bar{
-       background-color: rgb(15, 14, 14);
-        position: sticky;
-        top: 0;
-        width: 100%;
-        color: white;
-        display: flex;
-        justify-content: space-between;
-        padding: 6px 0px;
-        font-weight: bold;
-
-       }
-       .nav-left{
-        width: 50%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-       }
-       .nav-right{
-        width: 25%;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        font-size: 15px;
-       }
-       li{
-        list-style: none;
-       }
-       #carousel{
-        margin: 0px 10px;
-        padding: 0px 10px;
-       }
-       #loader-div{
-        display: flex;
-        justify-content: center;
-        
-        
-       }
-       #movies>div>h4,p{
-        display: none;
-      }
-      #movies>div:hover p{
-        display: block;
-      }
-      
-      
-       
-       
-
-    </style>
+    <link rel="stylesheet" href="index.css">
+    
 </head>
 <body>
     <nav id="bar">
