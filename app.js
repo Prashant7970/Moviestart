@@ -2,6 +2,7 @@ let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
 let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
 let cards = document.getElementsByClassName('cards')[0];
 let search = document.getElementsByClassName('cards')[0];
+let search_input = document.getElementById('search_input');
 
 left_btn.addEventListener('click',()=>{
     cards.scrollLeft -= 140;
@@ -46,7 +47,7 @@ fetch(json_url).then(Response => Response.json())
          
     //   search data load 
     data.forEach(element => {
-        let {name, imdb, date, sposter, genre, url }= element;
+        let {name, imdb, date, sposter, genre, url }= ele;
         let card = document.createElement('a');
         card.classList.add('card');
         card.href = url;
@@ -58,5 +59,46 @@ fetch(json_url).then(Response => Response.json())
         </div>
         `
         search.appendChild(card);
+    });
+
+    // search filter
+
+    search_input.addEventListener('keyup',()=>{
+        let filter = search_input.value.toUpperCase();
+        let a = search.getElementsByTagName('a')
+
+        for(let index=0; index<a.length; index++){
+            let b = [index].getElementsByClassName('cont')[0];
+            // console.log(a.textContent)
+            let TextValue =b.textContent || b.innerText
+            // let filter : any
+            if (TextValue.toUpperCase().indexOf(filter) > -1) {
+                a[index].style.display =   "flex";
+                search.style.visibility =  "visible";
+                search.style.opacity = 1;
+
+            }
+            else{
+                a[index].style.display =   "none"; 
+            }
+            if (search_input.value == 0) {
+                search.style.visibility =  "hidden";
+                search.style.opacity = 0;
+
+            } 
+        }
     })
+    let video = document.getElementsByTagName('video')[0];
+    let play = document.getElementById('play');
+
+    play.addEventListener('click', ()=>{
+        if (video.paused) {
+            video.play();
+            play.innerHTML =`Play <i class="bi bi-pause-fill"></i>`
+        } else {
+            play.innerHTML =`watch <i class="bi bi-play-fill"></i>`
+            video.pause();
+        }
+    })
+
 });
