@@ -1,7 +1,7 @@
 let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
 let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
 let cards = document.getElementsByClassName('cards')[0];
-let search = document.getElementsByClassName('cards')[0];
+let search = document.getElementsByClassName('search')[0];
 let search_input = document.getElementById('search_input');
 
 left_btn.addEventListener('click',()=>{
@@ -47,7 +47,7 @@ fetch(json_url).then(Response => Response.json())
          
     //   search data load 
     data.forEach(element => {
-        let {name, imdb, date, sposter, genre, url }= ele;
+        let {name, imdb, date, sposter, genre, url }= element;
         let card = document.createElement('a');
         card.classList.add('card');
         card.href = url;
@@ -64,19 +64,20 @@ fetch(json_url).then(Response => Response.json())
     // search filter
 
     search_input.addEventListener('keyup',()=>{
+        
         let filter = search_input.value.toUpperCase();
         let a = search.getElementsByTagName('a')
 
         for(let index=0; index<a.length; index++){
-            let b = [index].getElementsByClassName('cont')[0];
+            let b = a[index].getElementsByClassName('cont')[0];
             // console.log(a.textContent)
             let TextValue =b.textContent || b.innerText
             // let filter : any
             if (TextValue.toUpperCase().indexOf(filter) > -1) {
-                a[index].style.display =   "flex";
+                a[index].style.display =   "block";
                 search.style.visibility =  "visible";
                 search.style.opacity = 1;
-
+                console.log("typr")
             }
             else{
                 a[index].style.display =   "none"; 
