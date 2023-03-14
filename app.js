@@ -46,9 +46,11 @@ fetch(json_url).then(Response => Response.json())
          document.getElementById('rate').innerHTML = ` <span>IMDB</span><i class="bi bi-star-fill"></i>${data[0].imdb}`;
          
     //   search data load 
-    data.forEach(ele => {
-       
-        let { name, imdb, date, sposter, genre, url } = ele;
+
+
+    data.forEach(element => {
+        let {name, imdb, date, sposter, genre, url }= element;
+
         let card = document.createElement('a');
         card.classList.add('card');
         card.href = url;
@@ -64,21 +66,24 @@ fetch(json_url).then(Response => Response.json())
 
     // search filter
 
+
     search_input.addEventListener('keyup', () => { 
         // console.log("amandeep")
         let filter = search_input.value.toUpperCase();
         let a = search.getElementsByTagName('a')
 
         for(let index=0; index < a.length; index++){
+
+   
             let b = a[index].getElementsByClassName('cont')[0];
             // console.log(a.textContent)
             let TextValue = b.textContent || b.innerText
             // let filter : any
             if (TextValue.toUpperCase().indexOf(filter) > -1) {
-                a[index].style.display =   "flex";
+                a[index].style.display =   "block";
                 search.style.visibility =  "visible";
                 search.style.opacity = 1;
-
+                console.log("typr")
             }
             else{
                 a[index].style.display =   "none"; 
