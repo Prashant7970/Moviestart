@@ -306,6 +306,7 @@ header section .cards{
     margin-top: 10px;
     display: flex;
     align-items: center;
+    overflow-y: hidden;
     overflow-x: auto;
     scroll-behavior: smooth;
     
@@ -428,8 +429,52 @@ header section .bi-chevron-right{
    right: 3%;
     }  
     header section:hover .bi-chevron-right{
-     opacity: 2;
+     opacity: 1;
     }
     header section:hover .bi-chevron-left{
-       opacity: 2;
-         }        
+       opacity: 1;
+         }  
+
+         
+@media screen and (max-width: 1250px) and (min-width: 719px) {
+    header video{
+        position: absolute;
+        width: 200%;
+        height: 180%;
+    }
+    
+}
+@media screen and (min-width: 320px) and (max-width: 720px) {
+
+    header{
+        width: 80%;
+        height: 90%;
+    }
+   
+    header .content{
+
+        padding-left: 10px;
+    }
+    header section{
+    
+     padding: 0px 10px;
+    }
+    header nav{   
+        padding: 0px 10px;
+        flex-direction: column;
+    }
+   
+    header nav .logo_ul img{
+        width: 80px;
+    }
+   
+    header nav .logo_ul ul li{
+      padding: 3px 5px;
+    }
+    header nav .logo_ul ul li a{
+       
+        font-size: 12px;
+       
+    }
+    
+}

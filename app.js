@@ -1,7 +1,7 @@
 let left_btn = document.getElementsByClassName('bi-chevron-left')[0];
 let right_btn = document.getElementsByClassName('bi-chevron-right')[0];
 let cards = document.getElementsByClassName('cards')[0];
-let search = document.getElementsByClassName('cards')[0];
+let search = document.getElementsByClassName('search')[0];
 let search_input = document.getElementById('search_input');
 
 left_btn.addEventListener('click',()=>{
@@ -46,31 +46,33 @@ fetch(json_url).then(Response => Response.json())
          document.getElementById('rate').innerHTML = ` <span>IMDB</span><i class="bi bi-star-fill"></i>${data[0].imdb}`;
          
     //   search data load 
-    data.forEach(element => {
-        let {name, imdb, date, sposter, genre, url }= ele;
+    data.forEach(ele => {
+       
+        let { name, imdb, date, sposter, genre, url } = ele;
         let card = document.createElement('a');
         card.classList.add('card');
         card.href = url;
         card.innerHTML = `
         <img src="${sposter}" alt="">
-        <div class="cont">
-            <h3>${name}</h3>
-            <p>${genre},${date} , <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</p>
-        </div>
-        `
+                <div class="cont">
+                    <h3>${name} </h3>
+                    <p>${genre}, ${date} , <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</p>
+                </div>
+        ` 
         search.appendChild(card);
     });
 
     // search filter
 
-    search_input.addEventListener('keyup',()=>{
+    search_input.addEventListener('keyup', () => { 
+        // console.log("amandeep")
         let filter = search_input.value.toUpperCase();
         let a = search.getElementsByTagName('a')
 
-        for(let index=0; index<a.length; index++){
-            let b = [index].getElementsByClassName('cont')[0];
+        for(let index=0; index < a.length; index++){
+            let b = a[index].getElementsByClassName('cont')[0];
             // console.log(a.textContent)
-            let TextValue =b.textContent || b.innerText
+            let TextValue = b.textContent || b.innerText
             // let filter : any
             if (TextValue.toUpperCase().indexOf(filter) > -1) {
                 a[index].style.display =   "flex";
@@ -92,6 +94,7 @@ fetch(json_url).then(Response => Response.json())
     let play = document.getElementById('play');
 
     play.addEventListener('click', ()=>{
+       
         if (video.paused) {
             video.play();
             play.innerHTML =`Play <i class="bi bi-pause-fill"></i>`
@@ -99,6 +102,71 @@ fetch(json_url).then(Response => Response.json())
             play.innerHTML =`watch <i class="bi bi-play-fill"></i>`
             video.pause();
         }
+    })
+
+    let series = document.getElementById('series');
+    let movies = document.getElementById('movies');
+
+    series.addEventListener('click', ()=>{
+        cards.innerHTML = '';
+
+        let series_array = data.filter(ele => {
+            return ele.type === "Series";
+        });
+
+        series_array.forEach((ele , i) => {
+            let {name, imdb, date, sposter, bposter, genre, url }= ele;
+            let card = document.createElement('a');
+            card.classList.add('card');
+            card.href = url;
+            card.innerHTML = `
+            <img src="${sposter}" alt="${name}" class="poster">
+            <div class="rest_card">
+                <img src="${bposter}" alt="">
+                <div class="cont">
+                    <h4>${name}</h4>
+                    <div class="sub">
+                        <p>${genre}, ${date}</p>
+                        <h3> <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</h3>
+                    </div>
+                </div>
+            </div>
+            `
+            cards.appendChild(card);
+            
+             });
+
+    })
+
+    movies.addEventListener('click', ()=>{
+        cards.innerHTML = '';
+
+        let movies_array = data.filter(ele => {
+            return ele.type === "Movie";
+        });
+
+        movies_array.forEach((ele , i) => {
+            let {name, imdb, date, sposter, bposter, genre, url }= ele;
+            let card = document.createElement('a');
+            card.classList.add('card');
+            card.href = url;
+            card.innerHTML = `
+            <img src="${sposter}" alt="${name}" class="poster">
+            <div class="rest_card">
+                <img src="${bposter}" alt="">
+                <div class="cont">
+                    <h4>${name}</h4>
+                    <div class="sub">
+                        <p>${genre}, ${date}</p>
+                        <h3> <span>IMDB</span><i class="bi bi-star-fill"></i>${imdb}</h3>
+                    </div>
+                </div>
+            </div>
+            `
+            cards.appendChild(card);
+            
+             });
+
     })
 
 });
