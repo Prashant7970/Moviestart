@@ -2,7 +2,9 @@ body{
     margin: 0;
     padding: 0;
     background: rgb(25, 25, 25);
+/*     display: flex */
 }
+
 #movies{
     width: 90%;
     margin:20px auto;
