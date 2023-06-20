@@ -2,7 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background: rgb(25, 25, 25);
-    display: flex
+/*     display: flex */
 }
 
 #movies{
